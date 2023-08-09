@@ -8,7 +8,8 @@ last_digit = number_str[-1]
 if sign == "-":
     if last_digit == "0":
         last_digit = abs_number_str[-1]
-    last_digit = sign + abs_number_str[-1]
+    else:
+        last_digit = sign + abs_number_str[-1]
 else:
     last_digit = abs_number_str[-1]
 print(f"Last digit of {number} is {last_digit} ", end="")
