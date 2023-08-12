@@ -2,12 +2,10 @@
 def my_function(argv):
         if len(argv) == 1:
             print("{:d} argument.".format(len(argv) - 1))
-        for i in range(1, len(argv)):
-            if len(argv) == 2:
-                print("{:d} argument:".format(len(argv) - 1))
-                print("{:d}: {}".format(i, argv[
-i]))
-        if len(argv) > 2:
+        elif len(argv) == 2:
+            print("{:d} argument:".format(len(argv) - 1))
+            print("{:d}: {}".format(1, argv[1]))
+        elif len(argv) > 2:
             print("{:d} arguments:".format(len(argv) - 1))
             for i in range(1, len(argv)):
                 print("{:d}: {}".format(i, argv[i]))
