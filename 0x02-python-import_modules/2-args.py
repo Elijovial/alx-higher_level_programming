@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def my_function(argv):
         if len(argv) == 1:
-            print("{:d} argument.".format(len(argv) - 1))
+            print("{:d} arguments.".format(len(argv) - 1))
         elif len(argv) == 2:
             print("{:d} argument:".format(len(argv) - 1))
             print("{:d}: {}".format(1, argv[1]))
