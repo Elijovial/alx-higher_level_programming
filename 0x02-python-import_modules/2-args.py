@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import sys
 def my_function(argv):
         if len(argv) == 1:
             print("{:d} argument.".format(len(argv) - 1))
@@ -13,4 +12,6 @@ i]))
             for i in range(1, len(argv)):
                 print("{:d}: {}".format(i, argv[i]))
 
-my_function(sys.argv)
+if __name__ == "__main__":
+    import sys
+    my_function(sys.argv)
