@@ -1,1 +1,2 @@
 257
+This is because CPython pre-allocates a pool of int objects for commonly used values, such as -5 to 256
