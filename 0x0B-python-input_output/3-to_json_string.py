@@ -1,5 +1,7 @@
-import json
 #!/usr/bin/python3
+import json
+
+
 """Write the function"""
 
 
