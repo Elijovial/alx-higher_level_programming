@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-import json
-
-
-"""Write the function"""
+"""Defines a string-to-JSON function"""
+impory json
 
 
 def to_json_string(my_obj):
