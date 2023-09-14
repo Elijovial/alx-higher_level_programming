@@ -1,0 +1,24 @@
+# Test file for 1-my_list.py
+import unittest
+from 1-my_list import MyList
+
+class TestMyList(unittest.TestCase):
+    """A class to test the MyList class"""
+
+    def setUp(self):
+        """Set up an instance of MyList for testing"""
+        self.my_list = MyList([10, 5, 8, 2, 7])
+
+    def test_is_instance(self):
+        """Test if the object is an instance of MyList and list"""
+        self.assertIsInstance(self.my_list, MyList)
+        self.assertIsInstance(self.my_list, list)
+
+    def test_print_sorted(self):
+        """Test the print_sorted method"""
+        with self.assertLogs(level="INFO") as cm:
+            self.my_list.print_sorted()
+        self.assertEqual(cm.output, ["INFO:root:[2, 5, 7, 8, 10]"])
+
+if __name__ == "__main__":
+    unittest.main()
