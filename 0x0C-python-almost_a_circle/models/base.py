@@ -12,7 +12,8 @@ class Base:
         """Initialize a Base instance.
 
         Args:
-            id (int): The id of the instance. If None, assign a new id based on __nb_objects.
+            id (int): The id of the instance
+            . If None, assign a new id based on __nb_objects.
         """
 
         # If id is not None, assign it to the public instance attribute id
