@@ -29,6 +29,7 @@ class Rectangle(Base):
         # If any exception occurs, re-raise it with the same message
         except Exception as e:
             raise e
+
     @property
     def width(self):
         """Get the width of the rectangle."""
