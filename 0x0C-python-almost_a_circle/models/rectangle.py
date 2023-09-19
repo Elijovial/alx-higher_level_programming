@@ -129,3 +129,9 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         # Assign the value to the private attribute
         self.__y = value
+
+    def area(self):
+        """Return the area value of the Rectangle instance."""
+
+        # The area of a rectangle is the product of its width and height
+        return self.__width * self.__height
