@@ -135,3 +135,14 @@ class Rectangle(Base):
 
         # The area of a rectangle is the product of its width and height
         return self.__width * self.__height
+
+    def display(self):
+        """Print in stdout the Rectangle instance with the character #."""
+
+        # Use a nested loop to print the rows and columns of the rectangle
+        for i in range(self.__height):
+            for j in range(self.__width):
+                print("#", end="")
+            print()
+
+            # Print a new line after each row
