@@ -21,11 +21,14 @@ class Rectangle(Base):
         # Call the super class with id
         super().__init__(id)
         # Assign each argument to the right attribute using setters
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
-
+        try:
+            self.width = width
+            self.height = height
+            self.x = x
+            self.y = y
+        # If any exception occurs, re-raise it with the same message
+        except Exception as e:
+            raise e
     @property
     def width(self):
         """Get the width of the rectangle."""
