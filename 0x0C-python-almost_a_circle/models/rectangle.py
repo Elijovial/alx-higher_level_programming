@@ -146,15 +146,9 @@ class Rectangle(Base):
             print()
 
             # Print a new line after each row
-            def __str__(self):
-                """Return a string representation of the Rectangle instance."""
-
-        # Use the format method to create a
-        # string with the attributes of the instance
-        self.id = idi
-        self.x = xi
-        self.y = yi
-        self.width = w
-        self.height = h
-        result = "[Rectangle] ({}) {}/{} - {}/{}".format(idi, xi, yi, w, h)
-        return result
+    def __str__(self):
+        """Method that override str method
+        """
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x,
+                                                        self.y, self.width,
+                                                        self.height))
