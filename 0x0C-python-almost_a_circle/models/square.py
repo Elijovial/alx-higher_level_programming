@@ -50,3 +50,25 @@ If None, assign a new id based on Base. Defaults to None.
         # height to assign the value to both attributes
         self.width = value
         self.height = value
+
+    def update(self, *args, **kwargs):
+        """Assign an argument to each attribute.
+
+        Args:
+            args (tuple): A tuple of arguments to assign to the attributes.
+            kwargs (dict): A dictionary of
+key/value arguments to assign to the attributes.
+        """
+
+        # Define a list of attribute names in the same order as the arguments
+        attributes = ["id", "size", "x", "y"]
+        # Use a loop to iterate over the arguments and the attribute names
+        for i, arg in enumerate(args):
+            # Use setattr to assign the argument value to the attribute name
+            setattr(self, attributes[i], arg)
+        # If args is empty or does not exist, use kwargs instead
+        if not args:
+            # Use a loop to iterate over the key/value pairs in kwargs
+            for key, value in kwargs.items():
+                # Use setattr to assign the value to the attribute name
+                setattr(self, key, value)
