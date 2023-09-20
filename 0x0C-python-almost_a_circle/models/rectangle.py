@@ -139,8 +139,15 @@ class Rectangle(Base):
     def display(self):
         """Print in stdout the Rectangle instance with the character #."""
 
+        # Print y new lines before the rectangle
+        for i in range(self.y):
+            print()
+
         # Use a nested loop to print the rows and columns of the rectangle
         for i in range(self.__height):
+            # Print x spaces before each row
+            for j in range(self.x):
+                print(" ", end="")
             for j in range(self.__width):
                 print("#", end="")
             print()
