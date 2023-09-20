@@ -72,3 +72,16 @@ key/value arguments to assign to the attributes.
             for key, value in kwargs.items():
                 # Use setattr to assign the value to the attribute name
                 setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Return the dictionary representation of a Square."""
+
+        # Create a new dictionary with the attributes of the instance
+        dictionary = {}
+        # Use a loop to iterate over the attribute names
+        for attribute in ["id", "size", "x", "y"]:
+            # Use getattr to get the value
+            # of each attribute and assign it to the dictionary
+            dictionary[attribute] = getattr(self, attribute)
+        # Return the dictionary
+        return dictionary
