@@ -138,11 +138,13 @@ of key/value arguments to assign to the attributes.
             with open(filename, "r") as file:
                 # Read the JSON string from the file
                 json_string = file.read()
-                # Use the static method from_json_string to convert the JSON string to a list of dictionaries
+                # Use the static method from_json_string to convert the
+                # JSON string to a list of dictionaries
                 list_dicts = cls.from_json_string(json_string)
                 # Use a loop to iterate over the list of dictionaries
                 for dictionary in list_dicts:
-                    # Use the class method create to create an instance from each dictionary and append it to the list
+                    # Use the class method create to create an instance from
+                    # each dictionary and append it to the list
                     instances.append(cls.create(**dictionary))
         # Return the list of instances
         return instances
