@@ -90,3 +90,29 @@ class Base:
         # Otherwise, use the json.loads
         # method to convert the JSON string to a list of dictionaries
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """Return an instance with all attributes already set.
+
+        Args:
+            dictionary (dict): A dictionary
+of key/value arguments to assign to the attributes.
+
+        Returns:
+            Base: An instance of the class that inherits from Base.
+        """
+
+        # Create a dummy instance with
+        # default values for the mandatory attributes
+        # For Rectangle, the mandatory attributes are width and height
+        # For Square, the mandatory attribute is size
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        # Use the update method to assign
+        # the real values from the dictionary to the dummy instance
+        dummy.update(**dictionary)
+        # Return the dummy instance
+        return dummy
