@@ -116,3 +116,33 @@ of key/value arguments to assign to the attributes.
         dummy.update(**dictionary)
         # Return the dummy instance
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """Return a list of instances from a file.
+
+        Returns:
+            list: A list of instances who inherits of Base.
+        """
+
+        # Import the json and os modules
+        import json
+        import os
+        # Create a filename based on the class name
+        filename = cls.__name__ + ".json"
+        # Create an empty list to store the instances
+        instances = []
+        # Check if the file exists
+        if os.path.exists(filename):
+            # Open the file in read mode
+            with open(filename, "r") as file:
+                # Read the JSON string from the file
+                json_string = file.read()
+                # Use the static method from_json_string to convert the JSON string to a list of dictionaries
+                list_dicts = cls.from_json_string(json_string)
+                # Use a loop to iterate over the list of dictionaries
+                for dictionary in list_dicts:
+                    # Use the class method create to create an instance from each dictionary and append it to the list
+                    instances.append(cls.create(**dictionary))
+        # Return the list of instances
+        return instances
