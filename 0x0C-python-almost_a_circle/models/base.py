@@ -148,3 +148,125 @@ of key/value arguments to assign to the attributes.
                     instances.append(cls.create(**dictionary))
         # Return the list of instances
         return instances
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Write the CSV string representation of list_objs to a file.
+
+        Args:
+            list_objs (list): A list of instances who inherits of Base.
+        """
+
+        # Import the csv module
+        import csv
+        # Create a filename based on the class name
+        filename = cls.__name__ + ".csv"
+        # Open the file in write mode
+        with open(filename, "w", newline="") as file:
+            # Create a csv writer object
+            writer = csv.writer(file)
+            # Use a loop to iterate over the list of objects
+            for obj in list_objs:
+                # Use the to_dictionary
+                # method to convert each object to a dictionary
+                dictionary = obj.to_dictionary()
+                # Create a list of values from the dictionary
+                # For Rectangle, the values are id, width, height, x, y
+                # For Square, the values are id, size, x, y
+                if cls.__name__ == "Rectangle":
+                    values = [dictionary["id"], dictionary["width"], dictionary["height"], dictionary["x"], dictionary["y"]]
+                elif cls.__name__ == "Square":
+                    values = [dictionary["id"], dictionary["size"], dictionary["x"], dictionary["y"]]
+                # Write the values to the file as a row
+                writer.writerow(values)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Return a list of instances from a file.
+
+        Returns:
+            list: A list of instances who inherits of Base.
+        """
+
+        # Import the csv and os modules
+        import csv
+        import os
+        # Create a filename based on the class name
+        filename = cls.__name__ + ".csv"
+        # Create an empty list to store the instances
+        instances = []
+        # Check if the file exists
+        if os.path.exists(filename):
+            # Open the file in read mode
+            with open(filename, "r", newline="") as file:
+                # Create a csv reader object
+                reader = csv.reader(file)
+                # Use a loop to iterate over the rows in the file
+                for row in reader:
+                    # Convert each row to a list of integers
+                    values = [int(value) for value in row]
+                    # Create a dictionary from the values
+                    # For Rectangle, the keys are id, width, height, x, y
+                    # For Square, the keys are id, size, x, y
+                    if cls.__name__ == "Rectangle":
+                        keys = ["id", "width", "height", "x", "y"]
+                    elif cls.__name__ == "Square":
+                        keys = ["id", "size", "x", "y"]
+                    dictionary = dict(zip(keys, values))
+                    # Use the class method create to create an instance
+                    # from the dictionary and append it to the list
+                    instances.append(cls.create(**dictionary))
+        # Return the list of instances
+        return instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Open a window and draw all the Rectangles and Squares.
+
+        Args:
+            list_rectangles (list): A list of Rectangle instances.
+            list_squares (list): A list of Square instances.
+        """
+
+        # Import the turtle module
+        import turtle
+        # Create a turtle object
+        t = turtle.Turtle()
+        # Set the speed of the turtle to 10
+        t.speed(10)
+        # Use a loop to iterate over the list of rectangles
+        for rect in list_rectangles:
+            # Set the color of the turtle to red
+            t.color("red")
+            # Move the turtle to the position of the rectangle
+            t.penup()
+            t.goto(rect.x, rect.y)
+            t.pendown()
+            # Use a loop to draw the rectangle with four sides
+            for i in range(4):
+                # If it is an even side,
+                # move forward by the width of the rectangle
+                if i % 2 == 0:
+                    t.forward(rect.width)
+                # If it is an odd side,
+                # move forward by the height of the rectangle
+                else:
+                    t.forward(rect.height)
+                # Turn left by 90 degrees
+                t.left(90)
+        # Use a loop to iterate over the list of squares
+        for square in list_squares:
+            # Set the color of the turtle to blue
+            t.color("blue")
+            # Move the turtle to the position of the square
+            t.penup()
+            t.goto(square.x, square.y)
+            t.pendown()
+            # Use a loop to draw the square with four sides
+            for i in range(4):
+                # Move forward by the size of the square
+                t.forward(square.size)
+                # Turn left by 90 degrees
+                t.left(90)
+        # Exit turtle when done
+        turtle.done()
