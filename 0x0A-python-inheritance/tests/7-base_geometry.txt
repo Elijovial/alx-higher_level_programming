@@ -1,0 +1,33 @@
+# Test file for 7-base_geometry.py
+import unittest
+from 7-base_geometry import BaseGeometry
+
+class TestBaseGeometry(unittest.TestCase):
+    """A class to test the BaseGeometry class"""
+
+    def setUp(self):
+        """Set up an instance of BaseGeometry for testing"""
+        self.bg = BaseGeometry()
+
+    def test_area(self):
+        """Test the area method"""
+        with self.assertRaises(Exception) as e:
+            self.bg.area()
+        self.assertEqual(str(e.exception), "area() is not implemented")
+
+    def test_integer_validator(self):
+        """Test the integer_validator method"""
+        self.bg.integer_validator("my_int", 12)
+        self.bg.integer_validator("width", 89)
+        with self.assertRaises(TypeError) as e:
+            self.bg.integer_validator("name", "John")
+        self.assertEqual(str(e.exception), "name must be an integer")
+        with self.assertRaises(ValueError) as e:
+            self.bg.integer_validator("age", 0)
+        self.assertEqual(str(e.exception), "age must be greater than 0")
+        with self.assertRaises(ValueError) as e:
+            self.bg.integer_validator("distance", -4)
+        self.assertEqual(str(e.exception), "distance must be greater than 0")
+
+if __name__ == "__main__":
+    unittest.main()
