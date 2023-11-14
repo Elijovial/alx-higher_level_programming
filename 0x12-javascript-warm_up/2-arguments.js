@@ -4,7 +4,7 @@ if (numArgs === 0)
 {
 	console.log('No argument');
 }
-if (numArgs === 1)
+else if (numArgs === 1)
 {
 	console.log('Argument found');
 }
