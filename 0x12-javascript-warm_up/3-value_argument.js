@@ -2,6 +2,6 @@
 const firstArgs = process.argv[2];
 if (firstArgv === underfined) {
 	console.log("No argument");
-else {
+} else {
 	console.log(firstArgs);
 }
