@@ -1,0 +1,1 @@
+Starting python programming proper
