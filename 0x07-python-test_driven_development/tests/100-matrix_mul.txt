@@ -1,0 +1,32 @@
+# Import the unittest module
+import unittest
+
+# Import the function to be tested
+from matrix_mul import matrix_mul
+
+# Create a subclass of unittest.TestCase
+class TestMatrixMul(unittest.TestCase):
+
+    # Define test methods that start with test_
+    def test_matrix_mul_valid(self):
+        # Test if the function works correctly with valid inputs
+        m_a = [[1, 2], [3, 4]]
+        m_b = [[1, 2], [3, 4]]
+        expected = [[7, 10], [15, 22]]
+        actual = matrix_mul(m_a, m_b)
+        # Use assert methods to compare the expected and actual outcomes
+        self.assertEqual(actual, expected)
+
+    def test_matrix_mul_invalid_type(self):
+        # Test if the function raises a TypeError with invalid inputs
+        m_a = "not a list"
+        m_b = [[1, 2], [3, 4]]
+        # Use assertRaises to check if an exception is raised
+        with self.assertRaises(TypeError):
+            matrix_mul(m_a, m_b)
+
+    # Add more test methods as needed
+
+# Run the tests if the file is executed as a script
+if __name__ == '__main__':
+    unittest.main()
